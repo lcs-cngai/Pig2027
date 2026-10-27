@@ -40,6 +40,8 @@ struct PigView: View {
 
     // Whose turn it is: 1 or 2.
     @State var currentPlayer: Int = 1
+    @State var remainingTurns: Int = 6
+    let maximumTurnsPerTurn: Int = 6
 
     // The colour of whoever's turn it is.
     @State var turnColor: Color = playerOneColor
@@ -161,10 +163,16 @@ struct PigView: View {
             message = "Oh no, a 1! Player \(currentPlayer) loses \(turnTotal) points."
             turnTotal = 0
             switchPlayer()
-        } else {
+        } else if remainingTurns == maximumTurnsPerTurn {
             // Any other roll is added to the turn total.
             turnTotal += roll
-            // TRY: Change this message.
+            remainingTurns -= 1
+            
+            if remainingTurns == 0 {
+                message = "You rolled a \(roll). Out of turn! Switching players"
+                switchPlayer()
+            }
+        }  else {
             message = "You rolled a \(roll). Roll again, or hold?"
         }
     }
@@ -190,6 +198,8 @@ struct PigView: View {
             currentPlayer = 1
             turnColor = playerOneColor
         }
+        
+        remainingTurns = 6
     }
 
     // Sets everything back to the way it was at the start.
