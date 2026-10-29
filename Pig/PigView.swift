@@ -150,7 +150,6 @@ struct PigView: View {
         // How big the game's window is on the Mac. It can be made taller or wider.
         .frame(minWidth: 480, minHeight: 680)
     }
-    
     // MARK: - Functions
     
     // Rolls the die once for the current player.
@@ -180,45 +179,45 @@ struct PigView: View {
                 message = "You rolled a \(roll). Roll again, or hold?"
             }
         }
-        // Banks the turn total into the current player's score, then ends the turn.
-        func hold() {
-            if currentPlayer == 1 {
-                playerOneScore += turnTotal
-            } else {
-                playerTwoScore += turnTotal
-            }
-            message = "Player \(currentPlayer) banked \(turnTotal) points."
-            turnTotal = 0
-            switchPlayer()
+    } // <--- Add this BRACE HERE to close rollDie()
+    // Banks the turn total into the current player's score, then ends the turn.
+    func hold() {
+        if currentPlayer == 1 {
+            playerOneScore += turnTotal
+        } else {
+            playerTwoScore += turnTotal
         }
-        
-        // Passes the turn to the other player.
-        func switchPlayer() {
-            if currentPlayer == 1 {
-                currentPlayer = 2
-                turnColor = playerTwoColor
-            } else {
-                currentPlayer = 1
-                turnColor = playerOneColor
-            }
-            
-            remainingTurns = 6
-        }
-        
-        // Sets everything back to the way it was at the start.
-        func startNewGame() {
-            playerOneScore = 0
-            playerTwoScore = 0
-            turnTotal = 0
+        message = "Player \(currentPlayer) banked \(turnTotal) points."
+        turnTotal = 0
+        switchPlayer()
+    }
+    
+    // Passes the turn to the other player.
+    func switchPlayer() {
+        if currentPlayer == 1 {
+            currentPlayer = 2
+            turnColor = playerTwoColor
+        } else {
             currentPlayer = 1
             turnColor = playerOneColor
-            dieSymbol = "questionmark.square.fill"
-            message = "Player 1 goes first. Click Roll to start."
-            remainingTurns = maximumTurnsPerTurn
-            
-            #Preview {
+        }
+        
+        remainingTurns = 6
+    }
+    
+    // Sets everything back to the way it was at the start.
+    func startNewGame() {
+        playerOneScore = 0
+        playerTwoScore = 0
+        turnTotal = 0
+        currentPlayer = 1
+        turnColor = playerOneColor
+        dieSymbol = "questionmark.square.fill"
+        message = "Player 1 goes first. Click Roll to start."
+        remainingTurns = maximumTurnsPerTurn
+    } // Closes startNewGame()
+    
+} // Closes PigView (THIS IS THE BRACE THAT WAS MISSING ABOVE #PREVIEW)
+        #Preview {
                 PigView()
             }
-        }
-    }
-}
