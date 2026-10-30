@@ -1,35 +1,29 @@
-# Pig
+#  Pig
 
-Pig is a dice game for two players who share one laptop.
+You against another player. Roll the dices and you roll a number. If you roll a 1, your turn ends and the game automatically gives the other player a new turn. The goal is to be the first one to have a total score of 100. The maximum rolls allowed are 6 per turn. If you are left with 0 remaining turns, your turn ends.
 
-On your turn, roll the die as many times as you like. Each roll is added to your turn total. When you click **Hold**, your turn total is banked into your score and the other player goes. But if you roll a 1, you lose your whole turn total and your turn is over. So every roll is a choice: push your luck, or play it safe?
+## How to Play
 
-Right now nobody can win. The scores just keep going up. In the real game, the first player to reach 100 wins. You will add that rule yourself.
+1. Click **Roll**
+2. Once you roll a number (that is not 1), you can either hold your current score to be safe, or you can risk further by rolling again.
+3. If you roll a 1, the turn ends and a new turn automatically goes to the other player
+4. The maximum rolls allowed are 6 per turn. If you are left with 0 remaining turns, your turn ends.
+5. The other player gets a new turn and the remaining turns are resetted back to 6.
 
-## How to run the game
+## Testing
 
-1. Open the game's folder and double-click **Pig.xcodeproj**. Xcode opens.
-2. At the top of the Xcode window, find the menu that names a device. Make sure it says **My Mac**.
-3. Press **Command-R**, or click the triangle-shaped **Run** button.
+|Test|Chosen Input|Should happen|Did happen|
+|Points erased when a player's turn ends by rolling 1 or running out of turns|Remaining Turns = 0; Score resets to 0; Switch Turns|-|-|
+|One roll counts down|Roll fixed at 2; Player 1 clicks Roll once|Remaining turns: 5, and the turn total is 2|✅|
+| | | | |
+| | | | |
+| | | | |
 
-The first run takes a minute while Xcode builds the app. After that, the game opens in its own window on your Mac and you can play.
 
-To read the code, click **PigView.swift** in the list of files on the left. Most of the game lives in that one file.
+## What I added
 
-## Three things to try
-
-Look for comments that start with `// TRY:`. They mark safe places to experiment. Here are three to start with.
-
-1. **Give each player a new colour.** Near the top of the file, change `Color.blue` and `Color.orange` to colours you like. Which parts of the screen change?
-2. **Change the size of the die.** Find `.font(.system(size: 120))` just under the die. Make the number bigger or smaller and run the game again.
-3. **Load the die.** Find `Int.random(in: 1...6)`. Change it to `Int.random(in: 2...6)`. Play a few turns. Why is the game no fun now? Change it back when you're done.
-
-If something stops working, don't panic. Press **Command-Z** to undo, or ask a classmate or me. Every programmer breaks things. It's how we learn.
+I modified the game by creating a limit of 6 rolls per turn. This is to prevent a player from getting too many points from an extremely high roll streak without getting a 1. I also made the rule that when a playe's turn ends, the other player gets a new turn and the remaining rolls are resetted back to 6. The same rules from the original game apply when you roll a 1.
 
 ## Credits
 
-I wrote this starter game for my ICS3U course at Lakefield College School.
-
-When you make the game your own, add to this list. Name any AI tool you used and what you used it for. Name any code, images or sounds that came from somewhere else, and say where they came from.
-
-- Starter game: Mr. Gordon, ICS3U
+Cody NGAI
