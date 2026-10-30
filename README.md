@@ -13,8 +13,9 @@ You against another player. Roll the dices and you roll a number. If you roll a 
 ## Testing
 
 |Test|Chosen Input|Should happen|Did happen|
-|Points erased when a player's turn ends by rolling 1 or running out of turns|Remaining Turns = 0; Score resets to 0; Switch Turns|-|-|
+|-|-|-|-|
 |One roll counts down|Roll fixed at 2; Player 1 clicks Roll once|Remaining turns: 5, and the turn total is 2|✅|
+|Points erased when a player's turn ends by rolling 1 or running out of turns|Remaining Turns = 0; Score resets to 0; Switch Turns|fghjkl|fghjkl|
 | | | | |
 | | | | |
 | | | | |
